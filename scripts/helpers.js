@@ -16,11 +16,8 @@ function attachButtonsListener(selector, datasetSelector, func) {
 function setSelectedDestination(text, value) {
   selectedDestination = text;
   selectedDestinationValue = value;
-  console.log(
-    "selected destination",
-    selectedDestination,
-    selectedDestinationValue
-  );
+
+  updateSelectedValues();
 
   //selectedDestinationObj =
   loadAvailableDepartures();
@@ -32,15 +29,26 @@ function setSelectedDeparture(text, value) {
   selectedDeparture = text;
   selectedDepartureValue = value;
 
+  updateSelectedValues();
+
   changeDepartureItem();
-  console.log("selected departure", selectedDeparture, selectedDepartureValue);
+  loadAvailableDates();
   //fetch offers
 }
 
 function setSelectedDate(value) {
   selectedDate = value;
 
-  console.log("selected date", selectedDate);
+  updateSelectedValues();
+}
+
+function updateSelectedValues() {
+  selectedValues = {
+    destination: selectedDestinationValue,
+    departure: selectedDepartureValue,
+    date: selectedDate,
+  };
+  console.log("Updated selectedValues:", selectedValues);
 }
 
 function changeDepartureItem() {
