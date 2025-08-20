@@ -7,11 +7,17 @@ let selectedDate;
 let selectedDestinationValue;
 let selectedDepartureValue;
 
+let selectedValues = {
+  destination: null,
+  departure: null,
+  selectedDate: null,
+};
+
 function init(offers) {
-  console.log(offers);
   offersObj = offers;
   fetchOffers(offers);
   loadAvailableCountries();
+  loadAvailableDepartures();
   loadAvailableDates();
 }
 
@@ -25,10 +31,6 @@ function loadAvailableCountries() {
   );
 
   listDestinations(destinations, lowercasedDestinations);
-
-  loadAvailableDepartures();
-
-  console.log("destinations", destinations);
 }
 
 function loadAvailableDepartures() {
@@ -60,7 +62,7 @@ function loadAvailableDates() {
   const matchedDestination = offersObj.destinations.find(
     (dest) => dest.destinationDisplayName === selectedDestination
   );
-  console.log(matchedDestination);
+
   const dates = getAvailableDates(matchedDestination.destination);
   const allDates = dates.flatMap((city) => city.availableDates);
 
