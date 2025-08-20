@@ -1,0 +1,27 @@
+body {
+  background-color: #f5f5f5;
+}
+
+:root {
+  --light-blue: rgba(0, 147, 208, 0.051);
+  --blue: #0093d0;
+  --off-blue: #f1f7fb;
+  --off-black: rgba(0, 0, 0, 0.651);
+  --highlight-blue: #66d1ff;
+}
+
+.offers-incentive {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.offers-incentive .offers-wrapper {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
