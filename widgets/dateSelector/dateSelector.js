@@ -22,7 +22,11 @@ function listDates(dates) {
 const getAvailableDates = (destinations) => {
   const today = getCurrentDate();
 
-  return destinations.map((city) => {
+  const filteredDestinations = destinations.filter((dest) =>
+    dest.departures?.name.includes(selectedDepartureValue)
+  );
+
+  return filteredDestinations.map((city) => {
     const availableDates = city.beginDates
       .map((d) => d.date)
       .filter((dateStr) => dateStr > today);
