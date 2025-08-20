@@ -1,11 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="widgets/list/list.css" />
+    <link rel="stylesheet" href="widgets/topSelector/topSelector.css" />
+    <link rel="stylesheet" href="widgets/dateSelector/dateSelector.css" />
+  </head>
+  <body>
+    <section class="offers-incentive">
+      <div class="selector">
+        <div class="destination-selector"></div>
+        <div class="departure-selector-wrapper">
+          <button type="button" class="departure-selector">
+            <span></span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="14"
+              height="15"
+              viewBox="0 0 14 15"
+              fill="none">
+              <path
+                d="M11.3724 5.1602L6.99912 9.4232L2.62587 5.1602C2.54774 5.08389 2.44284 5.04116 2.33362 5.04116C2.2244 5.04116 2.11951 5.08389 2.04137 5.1602C2.00354 5.19727 1.97348 5.24152 1.95296 5.29035C1.93244 5.33918 1.92187 5.39161 1.92188 5.44458C1.92187 5.49755 1.93244 5.54998 1.95296 5.59881C1.97348 5.64764 2.00354 5.69189 2.04137 5.72895L6.69375 10.265C6.77545 10.3446 6.88503 10.3892 6.99912 10.3892C7.11321 10.3892 7.22279 10.3446 7.3045 10.265L11.9569 5.72983C11.995 5.69273 12.0253 5.64838 12.0459 5.59939C12.0666 5.55039 12.0773 5.49776 12.0773 5.44458C12.0773 5.3914 12.0666 5.33876 12.0459 5.28977C12.0253 5.24078 11.995 5.19643 11.9569 5.15933C11.8787 5.08301 11.7738 5.04028 11.6646 5.04028C11.5554 5.04028 11.4505 5.08301 11.3724 5.15933V5.1602Z"
+                fill="black"
+                fill-opacity="0.14902" />
+            </svg>
+          </button>
+          <div class="departure-list"></div>
+        </div>
+      </div>
+      <div class="offers-wrapper">
+        <div class="list"></div>
+        <div class="date-selector">
+          <span>Pasirinkite išvykimo datą</span>
+          <div class="date-items"></div>
+        </div>
+      </div>
+    </section>
+    <script>
+      var offers = {
+        destinations: [
+          {
+            destinationDisplayName: "Turkija",
+            destination: [
+              {
+                name: "antalija",
+                departures: {
+                  displayName: ["Vilniaus", "Kauno"],
+                  name: ["vilnius", "kaunas"],
+                },
+                beginDates: [
+                  {
+                    date: "2025-08-22",
+                    stayNights: [3, 7, 10],
+                  },
+                  {
+                    date: "2025-08-23",
+                    stayNights: [5, 10],
+                  },
+                ],
+              },
+              {
+                name: "bodrumas",
+                departures: {
+                  displayName: ["Vilniaus", "Kauno"],
+                  name: ["vilnius", "kaunas"],
+                },
+                beginDates: [
+                  {
+                    date: "2025-08-25",
+                    stayNights: [3, 7, 10],
+                  },
+                  {
+                    date: "2025-08-28",
+                    stayNights: [5, 10],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            destinationDisplayName: "Juodkalnija",
+            destination: [
+              {
+                name: "juodkalnija",
+                departures: {
+                  displayName: ["Vilniaus"],
+                  name: ["vilnius"],
+                },
+                beginDates: [
+                  {
+                    date: "2025-08-24",
+                    stayNights: [10, 14, 10],
+                  },
+                  {
+                    date: "2025-08-27",
+                    stayNights: [7],
+                  },
+                  {
+                    date: "2025-09-07",
+                    stayNights: [7],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            destinationDisplayName: "Graikija",
+            destination: [
+              {
+                name: "graikija",
+                departures: {
+                  displayName: ["Vilniaus"],
+                  name: ["vilnius"],
+                },
+                beginDates: [
+                  {
+                    date: "2025-08-23",
+                    stayNights: [7],
+                  },
+                  {
+                    date: "2025-08-30",
+                    stayNights: [7],
+                  },
+                  {
+                    date: "2025-09-06",
+                    stayNights: [7],
+                  },
+                  {
+                    date: "2025-09-13",
+                    stayNights: [7],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      };
+
+      function observeOffers() {
+        const offersEl = document.querySelector(".offers-incentive");
+        if (!offersEl) return;
+
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                init(offers);
+                observer.unobserve(offersEl);
+              }
+            });
+          },
+          {
+            root: null,
+            threshold: 0.1,
+          }
+        );
+
+        observer.observe(offersEl);
+      }
+
+      document.addEventListener("DOMContentLoaded", observeOffers);
+    </script>
+    <script src="index.js"></script>
+    <script src="widgets/list/fetchOffers.js"></script>
+    <script src="widgets/topSelector/topSelector.js"></script>
+    <script src="widgets/dateSelector/dateSelector.js"></script>
+    <script src="scripts/helpers.js"></script>
+  </body>
 </html>
