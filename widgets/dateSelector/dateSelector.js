@@ -18,3 +18,23 @@ function listDates(dates) {
 
   attachButtonsListener("date", "date", setSelectedDate);
 }
+
+const getAvailableDates = (destinations) => {
+  const today = getCurrentDate();
+
+  return destinations.map((city) => {
+    const availableDates = city.beginDates
+      .map((d) => d.date)
+      .filter((dateStr) => dateStr > today);
+
+    return {
+      name: city.name,
+      availableDates,
+    };
+  });
+};
+
+const getCurrentDate = () => {
+  const date = new Date();
+  return date.toISOString().split("T")[0];
+};
