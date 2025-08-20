@@ -20,6 +20,13 @@ body {
   position: relative;
 }
 
+.offers-incentive h2 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 38px;
+  font-weight: 600;
+}
+
 .offers-incentive .offers-wrapper {
   display: flex;
   gap: 12px;
