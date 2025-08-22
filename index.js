@@ -15,7 +15,6 @@ let selectedValues = {
 
 function init(offers) {
   offersObj = offers;
-  fetchOffers(offers);
   loadAvailableCountries();
   loadAvailableDepartures();
   loadAvailableDates();
