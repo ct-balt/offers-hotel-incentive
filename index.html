@@ -54,12 +54,29 @@
                 },
                 beginDates: [
                   {
-                    date: "2025-08-22",
-                    stayNights: [3, 7, 10],
+                    date: "2025-08-23",
+                    stayNights: [
+                      {
+                        value: 3,
+                      },
+                      {
+                        value: 7,
+                      },
+                      {
+                        value: 10,
+                      },
+                    ],
                   },
                   {
-                    date: "2025-08-23",
-                    stayNights: [5, 10],
+                    date: "2025-08-24",
+                    stayNights: [
+                      {
+                        value: 5,
+                      },
+                      {
+                        value: 10,
+                      },
+                    ],
                   },
                 ],
               },
@@ -72,11 +89,28 @@
                 beginDates: [
                   {
                     date: "2025-08-25",
-                    stayNights: [3, 7, 10],
+                    stayNights: [
+                      {
+                        value: 3,
+                      },
+                      {
+                        value: 7,
+                      },
+                      {
+                        value: 10,
+                      },
+                    ],
                   },
                   {
                     date: "2025-08-28",
-                    stayNights: [5, 10],
+                    stayNights: [
+                      {
+                        value: 5,
+                      },
+                      {
+                        value: 10,
+                      },
+                    ],
                   },
                 ],
               },
@@ -94,15 +128,30 @@
                 beginDates: [
                   {
                     date: "2025-08-24",
-                    stayNights: [10, 14, 10],
+                    stayNights: [
+                      {
+                        value: 10,
+                      },
+                      {
+                        value: 14,
+                      },
+                    ],
                   },
                   {
                     date: "2025-08-27",
-                    stayNights: [7],
+                    stayNights: [
+                      {
+                        value: 7,
+                      },
+                    ],
                   },
                   {
                     date: "2025-09-07",
-                    stayNights: [7],
+                    stayNights: [
+                      {
+                        value: 7,
+                      },
+                    ],
                   },
                 ],
               },
@@ -120,19 +169,35 @@
                 beginDates: [
                   {
                     date: "2025-08-23",
-                    stayNights: [7],
+                    stayNights: [
+                      {
+                        value: 7,
+                      },
+                    ],
                   },
                   {
                     date: "2025-08-30",
-                    stayNights: [7],
+                    stayNights: [
+                      {
+                        value: 7,
+                      },
+                    ],
                   },
                   {
                     date: "2025-09-06",
-                    stayNights: [7],
+                    stayNights: [
+                      {
+                        value: 7,
+                      },
+                    ],
                   },
                   {
                     date: "2025-09-13",
-                    stayNights: [7],
+                    stayNights: [
+                      {
+                        value: 7,
+                      },
+                    ],
                   },
                 ],
               },
@@ -166,9 +231,12 @@
       document.addEventListener("DOMContentLoaded", observeOffers);
     </script>
     <script src="index.js"></script>
-    <script src="widgets/list/fetchOffers.js"></script>
+    <script src="constants/departuresConstants.js"></script>
+    <script src="constants/destinationsConstants.js"></script>
+    <script src="scripts/helpers.js"></script>
     <script src="widgets/topSelector/topSelector.js"></script>
     <script src="widgets/dateSelector/dateSelector.js"></script>
-    <script src="scripts/helpers.js"></script>
+    <script src="scripts/payloadGenerator.js"></script>
+    <script src="widgets/list/fetchOffers.js"></script>
   </body>
 </html>
