@@ -19,10 +19,8 @@ function setSelectedDestination(text, value) {
 
   updateSelectedValues();
 
-  //selectedDestinationObj =
   loadAvailableDepartures();
   loadAvailableDates();
-  //fetch offers
 }
 
 function setSelectedDeparture(text, value) {
@@ -33,7 +31,6 @@ function setSelectedDeparture(text, value) {
 
   changeDepartureItem();
   loadAvailableDates();
-  //fetch offers
 }
 
 function setSelectedDate(value) {
@@ -42,13 +39,20 @@ function setSelectedDate(value) {
   updateSelectedValues();
 }
 
+let fetchOffersTimeout;
+
 function updateSelectedValues() {
   selectedValues = {
     destination: selectedDestinationValue,
     departure: selectedDepartureValue,
     date: selectedDate,
   };
-  console.log("Updated selectedValues:", selectedValues);
+
+  clearTimeout(fetchOffersTimeout);
+
+  fetchOffersTimeout = setTimeout(() => {
+    fetchOffers();
+  }, 100);
 }
 
 function changeDepartureItem() {
