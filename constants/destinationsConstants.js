@@ -1,0 +1,74 @@
+const destinationsConstants = [
+  {
+    country: "turkija",
+    name: "Turkija",
+    friendlyUrl: "turkija",
+    id: "1-0",
+    type: 0,
+    children: [
+      {
+        id: "5-3",
+        type: 3,
+        name: "Antalija",
+        friendlyUrl: "antalija",
+      },
+      {
+        id: "1-3",
+        type: 3,
+        name: "Bodrumas",
+        friendlyUrl: "bodrumas",
+      },
+      {
+        id: "3264-3",
+        type: 3,
+        name: "Dalamanas",
+        friendlyUrl: "dalamanas",
+      },
+    ],
+  },
+  {
+    country: "graikija",
+    name: "Graikija",
+    friendlyUrl: "graikija",
+    id: "43-0",
+    type: 0,
+    children: null,
+  },
+  {
+    country: "egiptas",
+    name: "Egiptas",
+    friendlyUrl: "egiptas",
+    id: "12-0",
+    type: 0,
+    children: [
+      {
+        id: "70-3",
+        type: 3,
+        name: "Hurgada",
+        friendlyUrl: "hurgada",
+      },
+      {
+        id: "83-3",
+        type: 3,
+        name: "Šarm aš Šeichas",
+        friendlyUrl: "sarmasseichas",
+      },
+    ],
+  },
+  {
+    country: "jae",
+    name: "JAE",
+    friendlyUrl: "jae",
+    id: "31-0",
+    type: 0,
+    children: null,
+  },
+  {
+    country: "juodkalnija",
+    name: "Juodkalnija",
+    friendlyUrl: "juodkalnija",
+    id: "80-0",
+    type: 0,
+    children: null,
+  },
+];
