@@ -26,7 +26,8 @@
 }
 
 .list .card .info .image-wrapper {
-  width: 355px !important;
+  max-width: 355px !important;
+  width: 100% !important;
   height: 100%;
 }
 
@@ -235,6 +236,7 @@
 
   .list .card .info .image-wrapper {
     width: auto !important;
+    max-width: initial !important;
     height: 100%;
   }
 
