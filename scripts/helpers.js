@@ -62,3 +62,10 @@ function changeDepartureItem() {
   const deparSelectorDiv = document.querySelector(".departure-list");
   deparSelectorDiv.classList.toggle("open");
 }
+
+function removeListOffers() {
+  const offersDiv = document.querySelector(".list");
+  if (offersDiv) {
+    offersDiv.remove();
+  }
+}

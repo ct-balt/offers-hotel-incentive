@@ -1,6 +1,7 @@
 async function fetchOffers() {
   const payload = generatePayloadPriceSearchEncrypt();
 
+  removeListOffers();
   showLoadingBanner();
   hideWarningBanner();
 
@@ -20,6 +21,7 @@ async function fetchOffers() {
     listOffers(priceSearchListResponse);
   } catch (error) {
     showWarningBanner();
+    removeListOffers();
     console.error("error in fetchoffers", error);
   } finally {
     hideLoadingBanner();
