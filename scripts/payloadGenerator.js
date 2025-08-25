@@ -25,7 +25,7 @@ const generatePayloadPriceSearchEncrypt = () => {
     ],
     reservationType: 1,
     paging: {
-      pageNumber: activePageNumber,
+      pageNumber: 1,
       pageSize: 20,
       sortType: 0,
     },
@@ -37,6 +37,8 @@ const generatePayloadPriceSearchEncrypt = () => {
 };
 
 const generatePayloadPriceSearchList = (priceSearchEncryptResponse) => {
+  viewAllUrl = `https://www.coraltravel.lt${priceSearchEncryptResponse.result.redirectionUrl}?qp=${priceSearchEncryptResponse.result.queryParam}&p=1&w=0&s=0&ws=10`;
+
   const payload = {
     queryParam: priceSearchEncryptResponse.result.queryParam,
     notIncludeFilters: false,

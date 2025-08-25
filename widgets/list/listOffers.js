@@ -15,6 +15,14 @@ function listOffers(priceSearchListResponse) {
   products.forEach((product) =>
     listDiv.appendChild(createProductCard(product))
   );
+
+  const viewAllBtn = document.createElement("a");
+  viewAllBtn.className = "view-all-btn";
+  viewAllBtn.href = viewAllUrl;
+  viewAllBtn.target = "_blank";
+  viewAllBtn.textContent = "Visi pasiūlymai";
+
+  listDiv.appendChild(viewAllBtn);
   console.log("priceSearchListResponse.result.", result);
 }
 
