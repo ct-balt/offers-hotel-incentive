@@ -10,8 +10,10 @@ let selectedDepartureValue;
 let selectedValues = {
   destination: null,
   departure: null,
-  selectedDate: null,
+  date: null,
 };
+
+let viewAllUrl = null;
 
 function init(offers) {
   offersObj = offers;
