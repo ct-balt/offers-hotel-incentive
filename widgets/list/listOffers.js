@@ -23,7 +23,6 @@ function listOffers(priceSearchListResponse) {
   viewAllBtn.textContent = "Visi pasiūlymai";
 
   listDiv.appendChild(viewAllBtn);
-  console.log("priceSearchListResponse.result.", result);
 }
 
 function createProductCard(product) {

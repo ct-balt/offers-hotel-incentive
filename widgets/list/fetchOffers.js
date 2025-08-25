@@ -37,7 +37,6 @@ async function fetchOffers() {
     if (error.name === "AbortError") return;
     showWarningBanner();
     removeListOffers();
-    console.error("error in fetchoffers", error);
   } finally {
     hideLoadingBanner();
   }
@@ -72,10 +71,6 @@ async function callApi(apiUrl, payload, options = {}) {
 
     return data;
   } catch (error) {
-    if (error.name === "AbortError") {
-      console.log(`Request to ${apiUrl} was aborted`);
-      return;
-    }
-    console.error("Error:", error);
+    if (error.name === "AbortError") return;
   }
 }
