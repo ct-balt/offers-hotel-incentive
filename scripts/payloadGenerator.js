@@ -62,7 +62,6 @@ const getDestinationObj = () =>
 
 const getDestinationLocation = () => {
   const destinationObj = getDestinationObj();
-  console.log("destinationobj", destinationObj);
 
   if (!destinationObj.children) {
     if (destinationObj.country === "juodkalnija") {
@@ -94,14 +93,23 @@ const getDestinationLocation = () => {
       ];
     }
   }
-  const offerCityNames =
-    offers.destinations
-      .find(
-        (dest) =>
-          dest.destinationDisplayName.toLowerCase() ===
-          destinationObj.friendlyUrl
+  const matchedDestination = offersObj.destinations.find(
+    (dest) =>
+      dest.destinationDisplayName.toLowerCase() ===
+        destinationObj.friendlyUrl &&
+      dest.destination?.some((city) =>
+        city.beginDates?.filter(
+          (dateObj) => dateObj.date === selectedValues.date
+        )
       )
-      ?.destination.map((d) => d.name) || [];
+  );
+
+  const offerCityNames =
+    matchedDestination?.destination
+      .filter((city) =>
+        city.beginDates?.some((dateObj) => dateObj.date === selectedValues.date)
+      )
+      .map((city) => city.name) || [];
 
   const matchingChildren = destinationObj.children.filter((child) =>
     offerCityNames.includes(child.friendlyUrl)
