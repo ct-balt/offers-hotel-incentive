@@ -25,7 +25,7 @@ const generatePayloadPriceSearchEncrypt = () => {
     ],
     reservationType: 1,
     paging: {
-      pageNumber: 1,
+      pageNumber: activePageNumber,
       pageSize: 20,
       sortType: 0,
     },
@@ -60,14 +60,37 @@ const getDestinationObj = () =>
 
 const getDestinationLocation = () => {
   const destinationObj = getDestinationObj();
+  console.log("destinationobj", destinationObj);
 
   if (!destinationObj.children) {
-    return {
-      id: destinationObj.id,
-      type: destinationObj.type,
-      name: destinationObj.name,
-      friendlyUrl: destinationObj.friendlyUrl,
-    };
+    if (destinationObj.country === "juodkalnija") {
+      const additionalValues = destinationsConstants.find(
+        (destination) => destination.friendlyUrl === "kroatija"
+      );
+      return [
+        {
+          id: destinationObj.id,
+          type: destinationObj.type,
+          name: destinationObj.name,
+          friendlyUrl: destinationObj.friendlyUrl,
+        },
+        {
+          id: additionalValues.id,
+          type: additionalValues.type,
+          name: additionalValues.name,
+          friendlyUrl: additionalValues.friendlyUrl,
+        },
+      ];
+    } else {
+      return [
+        {
+          id: destinationObj.id,
+          type: destinationObj.type,
+          name: destinationObj.name,
+          friendlyUrl: destinationObj.friendlyUrl,
+        },
+      ];
+    }
   }
   const offerCityNames =
     offers.destinations

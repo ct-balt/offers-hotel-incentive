@@ -71,4 +71,12 @@ const destinationsConstants = [
     type: 0,
     children: null,
   },
+  {
+    country: "kroatija",
+    name: "Kroatija",
+    friendlyUrl: "kroatija",
+    id: "108-0",
+    type: 0,
+    children: null,
+  },
 ];
