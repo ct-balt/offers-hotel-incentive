@@ -64,8 +64,6 @@ function changeDepartureItem() {
 }
 
 function removeListOffers() {
-  const offersDiv = document.querySelector(".list");
-  if (offersDiv) {
-    offersDiv.remove();
-  }
+  const offersDiv = document.querySelectorAll(".list");
+  offersDiv.forEach((div) => div.remove());
 }
