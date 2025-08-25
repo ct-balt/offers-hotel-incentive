@@ -7,6 +7,7 @@
   gap: 12px;
   position: sticky;
   top: 64px;
+  z-index: 1;
 }
 
 .date-selector span {
@@ -51,4 +52,37 @@
   background-color: var(--off-blue);
   color: var(--blue);
   font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .date-selector {
+    max-width: 120px;
+  }
+}
+
+@media (max-width: 910px) {
+  .date-selector {
+    max-width: initial;
+    gap: 6px;
+    position: relative;
+    top: 0;
+    background-color: #fff;
+    padding: 10px 7px;
+    box-sizing: border-box;
+    border-radius: 6px;
+  }
+
+  .date-selector .date-items {
+    display: inline-flex;
+    flex-direction: initial;
+    align-items: center;
+    overflow-x: auto;
+    flex-shrink: 0;
+    padding-bottom: 6px;
+  }
+
+  .date-selector .date-items .date {
+    text-align: center;
+    text-wrap: nowrap;
+  }
 }

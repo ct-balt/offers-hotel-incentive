@@ -38,3 +38,10 @@ body {
   gap: 12px;
   align-items: flex-start;
 }
+
+@media (max-width: 910px) {
+  .offers-incentive .offers-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}

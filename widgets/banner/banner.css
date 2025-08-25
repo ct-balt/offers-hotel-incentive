@@ -9,6 +9,7 @@
   gap: 12px;
   border-radius: 12px;
   background-color: var(--light-blue);
+  box-sizing: border-box;
 }
 
 .warning-banner {

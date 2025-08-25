@@ -9,6 +9,7 @@
   gap: 12px;
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 .selector .destination-selector {
@@ -93,6 +94,7 @@
 
 .selector .departure-selector-wrapper .departure-list.open {
   display: flex;
+  z-index: 2;
 }
 
 .selector
@@ -142,9 +144,23 @@
 }
 
 @media (max-width: 768px) {
+  .selector {
+    box-sizing: border-box;
+    background-color: #fff;
+    border-radius: 6px;
+  }
+
+  .selector .destination-selector {
+    margin-bottom: 6px;
+  }
+
   .selector .departure-selector-wrapper {
     max-width: 150px !important;
     min-width: initial !important;
+  }
+
+  .selector .destination-selector .destination {
+    height: 32px;
   }
 }
 
@@ -153,5 +169,11 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+  }
+
+  .selector .departure-selector-wrapper {
+    order: 1;
+    max-width: initial !important;
+    min-width: initial !important;
   }
 }

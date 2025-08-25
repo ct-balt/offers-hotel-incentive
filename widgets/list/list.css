@@ -227,3 +227,52 @@
   font-size: 14px;
   font-weight: 400;
 }
+
+@media (max-width: 1200px) {
+  .list .card .price-info {
+    max-width: 200px !important;
+  }
+
+  .list .card .info .image-wrapper {
+    width: auto !important;
+    height: 100%;
+  }
+
+  .list .card .info .image-wrapper img {
+    width: auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .list .card {
+    flex-direction: column;
+    height: auto !important;
+    max-height: initial !important;
+  }
+
+  .list .card .info {
+    flex-direction: column;
+    width: initial;
+  }
+
+  .list .card .info .image-wrapper {
+    width: 100% !important;
+    height: 210px;
+    box-sizing: border-box;
+  }
+
+  .list .card .info .image-wrapper img {
+    width: 100% !important;
+    height: 210px;
+  }
+
+  .list .card .separator {
+    display: none;
+  }
+
+  .list .card .price-info {
+    max-width: initial !important;
+    padding: 6px;
+    gap: 12px;
+  }
+}
