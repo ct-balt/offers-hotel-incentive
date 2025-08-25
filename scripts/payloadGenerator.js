@@ -1,43 +1,46 @@
-const generatePayload = () => {
+const generatePayloadPriceSearchEncrypt = () => {
   const departure = getDepartureLocation();
   const arrival = getDestinationLocation();
   const nights = getStayNights();
 
   const payload = {
-    searchCriterias: {
-      flightType: 2,
-      reservationType: 1,
-      beginDates: [selectedValues.date],
-      datePickerMode: 0,
-      nights: nights,
-      roomCriterias: [
-        {
-          passengers: [
-            {
-              passengerType: 0,
-              age: 20,
-            },
-            {
-              passengerType: 0,
-              age: 20,
-            },
-          ],
-        },
-      ],
-      departureLocations: departure,
-      arrivalLocations: arrival,
-      paging: {
-        hasPreviousPage: false,
-        hasNextPage: false,
-        pageNumber: 1,
-        pageSize: 20,
-        sortType: 0,
+    beginDates: [selectedValues.date],
+    arrivalLocations: arrival,
+    departureLocations: [departure],
+    nights: nights,
+    datePickerMode: 0,
+    roomCriterias: [
+      {
+        passengers: [
+          {
+            age: 20,
+            passengerType: 0,
+          },
+          {
+            age: 20,
+            passengerType: 0,
+          },
+        ],
       },
-      imageSizes: [4],
-      additionalFilters: [],
+    ],
+    reservationType: 1,
+    paging: {
+      pageNumber: 1,
+      pageSize: 20,
+      sortType: 0,
     },
+    additionalFilters: [],
+    imageSizes: [4],
+  };
+
+  return payload;
+};
+
+const generatePayloadPriceSearchList = (priceSearchEncryptResponse) => {
+  const payload = {
+    queryParam: priceSearchEncryptResponse.result.queryParam,
     notIncludeFilters: false,
-    searchSource: 2,
+    searchSource: 0,
     getOnlyTopHotels: false,
     dontSearchTopHotels: true,
   };
