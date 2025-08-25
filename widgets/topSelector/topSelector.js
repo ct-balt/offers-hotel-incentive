@@ -48,9 +48,11 @@ function listDepartures(departures, values) {
   attachButtonsListener("departure", "text", setSelectedDeparture);
 }
 
-const deparSelectorButton = document.querySelector(".departure-selector");
-deparSelectorButton.addEventListener("click", () => {
-  const deparSelectorDiv = document.querySelector(".departure-list");
+function attachDropdownListener() {
+  const deparSelectorButton = document.querySelector(".departure-selector");
+  deparSelectorButton.addEventListener("click", () => {
+    const deparSelectorDiv = document.querySelector(".departure-list");
 
-  deparSelectorDiv.classList.toggle("open");
-});
+    deparSelectorDiv.classList.toggle("open");
+  });
+}

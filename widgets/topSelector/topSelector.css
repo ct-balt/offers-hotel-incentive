@@ -67,7 +67,7 @@
   border-radius: 6px;
   border: 2px solid var(--light-blue);
   display: inline-flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 6px 12px;
@@ -148,10 +148,7 @@
     box-sizing: border-box;
     background-color: #fff;
     border-radius: 6px;
-  }
-
-  .selector .destination-selector {
-    margin-bottom: 6px;
+    position: relative;
   }
 
   .selector .departure-selector-wrapper {

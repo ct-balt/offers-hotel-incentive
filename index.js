@@ -57,6 +57,8 @@ function loadAvailableDepartures() {
   const departureValues = uniqueDepartures.map((d) => d.name);
 
   listDepartures(departureDisplayNames, departureValues);
+
+  attachDropdownListener();
 }
 
 function loadAvailableDates() {

@@ -34,10 +34,10 @@ function createProductCard(product) {
 
   cardDiv.innerHTML = `
     <div class="info">
-              <a href=${redirectUrl} class="image-wrapper">
+              <a href=${redirectUrl} target="_blank" class="image-wrapper">
                 <img
                   src=${product?.hotel?.images[0]?.sizes[0]?.url}
-                  alt=${product?.hotel?.name}
+                  alt="${product?.hotel?.name}"
                   loading="lazy" />
               </a>
               <div class="details">
@@ -252,7 +252,7 @@ function createProductCard(product) {
                   </div>
                 </div>
               </div>
-              <a href=${redirectUrl} class="choose-button">Rinktis</a>
+              <a href=${redirectUrl} target="_blank" class="choose-button">Rinktis</a>
             </div>
             `;
 
