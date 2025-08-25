@@ -1,6 +1,11 @@
 const apiCache = new Map();
+let fetchController;
 
 async function fetchOffers() {
+  if (fetchController) fetchController.abort();
+  fetchController = new AbortController();
+  const signal = fetchController.signal;
+
   const payload = generatePayloadPriceSearchEncrypt();
 
   removeListOffers();
@@ -10,18 +15,26 @@ async function fetchOffers() {
   try {
     const priceSearchEncryptResponse = await callApi(
       "https://www.coraltravel.lt/endpoints/PackageTourHotelProduct/PriceSearchEncrypt",
-      payload
+      payload,
+      { signal }
     );
+
+    if (!priceSearchEncryptResponse) return;
+
     const priceSearchPayload = generatePayloadPriceSearchList(
       priceSearchEncryptResponse
     );
+
     const priceSearchListResponse = await callApi(
       "https://www.coraltravel.lt/endpoints/PackageTourHotelProduct/PriceSearchList",
-      priceSearchPayload
+      priceSearchPayload,
+      { signal }
     );
 
+    hideWarningBanner();
     listOffers(priceSearchListResponse);
   } catch (error) {
+    if (error.name === "AbortError") return;
     showWarningBanner();
     removeListOffers();
     console.error("error in fetchoffers", error);
@@ -30,7 +43,8 @@ async function fetchOffers() {
   }
 }
 
-async function callApi(apiUrl, payload) {
+async function callApi(apiUrl, payload, options = {}) {
+  const { signal } = options;
   const cacheKey = `${apiUrl}:${JSON.stringify(payload)}`;
 
   if (apiCache.has(cacheKey)) {
@@ -45,6 +59,7 @@ async function callApi(apiUrl, payload) {
         Accept: "application/json, text/plain, */*",
       },
       body: JSON.stringify(payload),
+      signal,
     });
 
     if (!response.ok) {
@@ -57,6 +72,10 @@ async function callApi(apiUrl, payload) {
 
     return data;
   } catch (error) {
+    if (error.name === "AbortError") {
+      console.log(`Request to ${apiUrl} was aborted`);
+      return;
+    }
     console.error("Error:", error);
   }
 }
