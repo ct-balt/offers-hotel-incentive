@@ -1,0 +1,213 @@
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list .card {
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  border-radius: 12px;
+  border: 1px solid var(--light-gray);
+  height: 275px !important;
+  max-height: 275px !important;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.list .card .info {
+  padding: 6px;
+  width: 100%;
+  display: flex;
+  gap: 12px;
+}
+
+.list .card .info .image-wrapper {
+  width: 355px !important;
+  height: 100%;
+}
+
+.list .card .info .image-wrapper img {
+  width: 355px !important;
+  height: 100%;
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.list .card .info .details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+}
+
+.list .card .info .details .hotel {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.list .card .info .details .hotel .location {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(0, 0, 0, 0.651);
+}
+
+.list .card .info .details .hotel .hotel-name {
+  margin: 0;
+  font-size: 20px;
+  color: #000;
+  font-weight: 600;
+}
+
+.list .card .info .details .rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.list .card .info .details .rating .no-star-category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background-color: #f6ffed;
+  border: 1px solid var(--off-green);
+  color: var(--green);
+  font-size: 12px;
+  padding: 0 7px;
+}
+
+.list .card .info .details .extra-info {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.list .card .info .details .extra-info .item {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+
+.list .card .info .details .extra-info .item span {
+  font-size: 12px;
+  font-weight: 300;
+  color: #000;
+}
+
+.list .card .separator {
+  width: 1px;
+  height: 100%;
+  background-color: var(--light-gray);
+}
+
+.list .card .price-info {
+  max-width: 280px !important;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 14px 14px 14px 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.list .card .price-info .top {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list .card .price-info .top .price {
+  display: flex;
+  flex-direction: column;
+}
+
+.list .card .price-info .top .price .price-from {
+  font-size: 12px;
+  color: var(--dark-gray);
+  font-weight: 400;
+}
+
+.list .card .price-info .top .price .old-price-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.list .card .price-info .top .price .old-price-wrapper .old-price {
+  font-size: 14px;
+  color: #000;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.list .card .price-info .top .price .old-price-wrapper .discount {
+  background-color: var(--orange);
+  border-radius: 4px;
+  padding: 2px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 12px;
+}
+
+.list .card .price-info .top .price .current-price {
+  font-size: 12px;
+  color: var(--dark-gray);
+  font-weight: 400;
+}
+
+.list .card .price-info .top .price .current-price-per-person {
+  color: var(--blue);
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.list .card .price-info .top .additional-price-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.list .card .price-info .top .additional-price-info .travelers,
+.list .card .price-info .top .additional-price-info .flight {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border-radius: 4px;
+  padding: 2px 6px;
+  background-color: rgba(0, 0, 0, 0.0392);
+  justify-content: center;
+  font-size: 10px;
+  width: fit-content;
+}
+
+.list .card .price-info .top .additional-price-info .flight {
+  background-color: #f6ffed;
+  border: 1px solid var(--off-green);
+  color: var(--green);
+}
+
+.list .card .price-info .choose-button {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--green);
+  border-radius: 8px;
+  color: #fff !important;
+  font-size: 16px;
+  font-weight: 400;
+  text-decoration: none !important;
+}
