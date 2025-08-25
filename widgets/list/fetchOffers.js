@@ -1,3 +1,5 @@
+const apiCache = new Map();
+
 async function fetchOffers() {
   const payload = generatePayloadPriceSearchEncrypt();
 
@@ -29,6 +31,12 @@ async function fetchOffers() {
 }
 
 async function callApi(apiUrl, payload) {
+  const cacheKey = `${apiUrl}:${JSON.stringify(payload)}`;
+
+  if (apiCache.has(cacheKey)) {
+    return apiCache.get(cacheKey);
+  }
+
   try {
     const response = await fetch(apiUrl, {
       method: "POST",
@@ -43,7 +51,11 @@ async function callApi(apiUrl, payload) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
 
-    return response.json();
+    const data = await response.json();
+
+    apiCache.set(cacheKey, data);
+
+    return data;
   } catch (error) {
     console.error("Error:", error);
   }
