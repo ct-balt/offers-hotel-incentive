@@ -8,6 +8,12 @@ body {
   --off-blue: #f1f7fb;
   --off-black: rgba(0, 0, 0, 0.651);
   --highlight-blue: #66d1ff;
+  --off-orange: rgba(240, 171, 0, 0.051);
+  --light-gray: rgba(0, 0, 0, 0.0588);
+  --dark-gray: rgba(0, 0, 0, 0.851);
+  --orange: #e84f0e;
+  --green: #52c41a;
+  --off-green: #b7eb8f;
 }
 
 .offers-incentive {
