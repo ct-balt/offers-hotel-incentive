@@ -49,8 +49,15 @@ function listDepartures(departures, values) {
 }
 
 document.addEventListener("click", (e) => {
-  if (e.target.matches(".departure-selector")) {
-    const deparSelectorDiv = document.querySelector(".departure-list");
+  const deparSelectorDiv = document.querySelector(
+    ".departure-selector-wrapper"
+  );
+
+  const isClickOnSelector = e.target.closest(".departure-selector");
+
+  if (isClickOnSelector) {
     deparSelectorDiv.classList.toggle("open");
+  } else if (deparSelectorDiv.classList.contains("open")) {
+    deparSelectorDiv.classList.remove("open");
   }
 });

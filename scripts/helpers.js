@@ -58,9 +58,6 @@ function updateSelectedValues() {
 function changeDepartureItem() {
   const deparSelectorBtn = document.querySelector(".departure-selector span");
   deparSelectorBtn.innerHTML = `iš ${selectedDeparture}`;
-
-  const deparSelectorDiv = document.querySelector(".departure-list");
-  deparSelectorDiv.classList.toggle("open");
 }
 
 function removeListOffers() {
