@@ -28,8 +28,10 @@ const getAvailableDates = (destinations) => {
 
   return filteredDestinations.map((city) => {
     const availableDates = city.beginDates
-      .map((d) => d.date)
-      .filter((dateStr) => dateStr > today);
+      .filter(
+        (d) => d.date > today && d.departures.includes(selectedValues.departure)
+      )
+      .map((d) => d.date);
 
     return {
       name: city.name,
