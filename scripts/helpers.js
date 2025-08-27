@@ -52,6 +52,14 @@ function updateSelectedValues() {
 
   fetchOffersTimeout = setTimeout(() => {
     fetchOffers();
+
+    const offersIncentiveElement = document.querySelector(".offers-incentive");
+    if (offersIncentiveElement) {
+      offersIncentiveElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   }, 100);
 }
 
