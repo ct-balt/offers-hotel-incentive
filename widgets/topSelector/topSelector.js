@@ -2,12 +2,20 @@ function listDestinations(destinations, values) {
   const destSelectorDiv = document.querySelector(".destination-selector");
 
   destinations.map((dest, index) => {
+    const destinationValue = values[index];
+
+    const existingButton = destSelectorDiv.querySelector(
+      `button[data-destination="${destinationValue}"]`
+    );
+
+    if (existingButton) return;
+
     const destButton = document.createElement("button");
     destButton.type = "button";
     destButton.className = "destination";
     destButton.textContent = dest;
     destButton.dataset.text = dest;
-    destButton.dataset.destination = values[index];
+    destButton.dataset.destination = destinationValue;
 
     destSelectorDiv.appendChild(destButton);
   });
