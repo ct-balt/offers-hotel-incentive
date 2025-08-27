@@ -1,13 +1,19 @@
 .date-selector {
   max-width: 200px;
   width: 100%;
-  padding-right: 6px;
+  padding: 7px;
   display: flex;
   flex-direction: column;
   gap: 12px;
   position: sticky;
   top: 64px;
   z-index: 1;
+  background-color: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--light-gray);
+  overflow-y: visible;
+  max-height: 100vh;
+  height: 100%;
 }
 
 .date-selector span {
@@ -21,6 +27,7 @@
   flex-direction: column;
   gap: 6px;
   width: 100%;
+  overflow-y: auto;
 }
 
 .date-selector .date-items .date {
