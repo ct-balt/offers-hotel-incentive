@@ -2,6 +2,7 @@ const generatePayloadPriceSearchEncrypt = () => {
   const departure = getDepartureLocation();
   const arrival = getDestinationLocation();
   const nights = getStayNights();
+  const filters = getAdditionalFilters();
 
   const payload = {
     beginDates: [selectedValues.date],
@@ -29,7 +30,7 @@ const generatePayloadPriceSearchEncrypt = () => {
       pageSize: 20,
       sortType: 0,
     },
-    additionalFilters: [],
+    additionalFilters: filters || [],
     imageSizes: [4],
   };
 
@@ -153,4 +154,8 @@ const getStayNights = () => {
   }
 
   return allUniqueStayNights;
+};
+
+const getAdditionalFilters = () => {
+  return selectedValues.filters;
 };
