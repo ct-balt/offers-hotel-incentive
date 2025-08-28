@@ -23,7 +23,7 @@ const getAvailableDates = (destinations) => {
   const today = getCurrentDate();
 
   const filteredDestinations = destinations.filter((dest) =>
-    dest.departures?.name.includes(selectedDepartureValue)
+    dest.departures?.name.includes(selectedValues.departure)
   );
 
   return filteredDestinations.map((city) => {
