@@ -15,9 +15,8 @@ function attachButtonsListener(selector, datasetSelector, func) {
 
 function setSelectedDestination(text, value) {
   selectedDestination = text;
-  selectedDestinationValue = value;
 
-  updateSelectedValues();
+  updateSelectedValues({ destination: value });
 
   loadAvailableDepartures();
   loadAvailableDates();
@@ -25,27 +24,23 @@ function setSelectedDestination(text, value) {
 
 function setSelectedDeparture(text, value) {
   selectedDeparture = text;
-  selectedDepartureValue = value;
 
-  updateSelectedValues();
+  updateSelectedValues({ departure: value });
 
   changeDepartureItem();
   loadAvailableDates();
 }
 
 function setSelectedDate(value) {
-  selectedDate = value;
-
-  updateSelectedValues();
+  updateSelectedValues({ date: value });
 }
 
 let fetchOffersTimeout;
 
-function updateSelectedValues() {
+function updateSelectedValues(newValues = {}) {
   selectedValues = {
-    destination: selectedDestinationValue,
-    departure: selectedDepartureValue,
-    date: selectedDate,
+    ...selectedValues,
+    ...newValues,
   };
 
   clearTimeout(fetchOffersTimeout);

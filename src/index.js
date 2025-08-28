@@ -4,13 +4,11 @@ let selectedDestination;
 let selectedDeparture;
 let selectedDate;
 
-let selectedDestinationValue;
-let selectedDepartureValue;
-
 let selectedValues = {
   destination: null,
   departure: null,
   date: null,
+  filters: null,
 };
 
 let viewAllUrl = null;
@@ -20,6 +18,7 @@ function init(offers) {
   loadAvailableCountries();
   loadAvailableDepartures();
   loadAvailableDates();
+  loadHotelCategory();
 }
 
 function loadAvailableCountries() {
