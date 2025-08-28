@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="widgets/topSelector/topSelector.css" />
     <link rel="stylesheet" href="widgets/dateSelector/dateSelector.css" />
     <link rel="stylesheet" href="widgets/banner/banner.css" />
+    <link rel="stylesheet" href="widgets/sideSelector/sideSelector.css" />
+    <link
+      rel="stylesheet"
+      href="widgets/hotelCategorySelector/hotelCategorySelector.css" />
   </head>
   <body>
     <section class="offers-incentive">
@@ -34,9 +38,32 @@
         </div>
       </div>
       <div class="offers-wrapper">
-        <div class="date-selector">
-          <span>Pasirinkite išvykimo datą</span>
-          <div class="date-items"></div>
+        <div class="side-selector">
+          <div class="wrapper">
+            <div class="date-selector">
+              <span>Pasirinkite išvykimo datą</span>
+              <div class="date-items"></div>
+            </div>
+            <div class="separator"></div>
+            <div class="hotel-category">
+              <span>Viešbučio kategorija</span>
+              <div class="items"></div>
+            </div>
+            <div class="buttons">
+              <button
+                type="button"
+                class="remove-filters"
+                onclick="removeFilters()">
+                Panaikinti filtrus
+              </button>
+              <button
+                type="button"
+                class="submit-filters"
+                onclick="applyFilters()">
+                Pritaikyti filtrus
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -261,7 +288,9 @@
     </script>
     <script src="index.js"></script>
     <script src="widgets/topSelector/topSelector.js"></script>
+    <script src="widgets/sideSelector/sideSelector.js"></script>
     <script src="widgets/dateSelector/dateSelector.js"></script>
+    <script src="widgets/hotelCategorySelector/hotelCategorySelector.js"></script>
     <script src="scripts/helpers.js"></script>
     <script src="constants/departuresConstants.js"></script>
     <script src="constants/destinationsConstants.js"></script>
