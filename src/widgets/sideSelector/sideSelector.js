@@ -1,7 +1,7 @@
 function removeFilters() {
   removeSelectedHotelCategory();
 
-  updateSelectedValues();
+  updateSelectedValues({ filters: [] });
 }
 
 function applyFilters() {
