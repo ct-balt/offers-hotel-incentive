@@ -15,3 +15,13 @@ function applyFilters() {
 
   updateSelectedValues({ filters: nonEmptyValues });
 }
+
+function toggleFilters() {
+  const additionalFilters = document.querySelector(".additional-filters");
+  additionalFilters.classList.toggle("open");
+
+  const additionalFiltersButton = document.querySelector(
+    ".additional-filters-button"
+  );
+  additionalFiltersButton.classList.toggle("open");
+}

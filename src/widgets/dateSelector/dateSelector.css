@@ -1,33 +1,23 @@
 .date-selector {
-  max-width: 200px;
   width: 100%;
-  padding: 7px;
   display: flex;
   flex-direction: column;
   gap: 12px;
-  position: sticky;
-  top: 64px;
   z-index: 1;
-  background-color: #fff;
-  border-radius: 12px;
-  border: 1px solid var(--light-gray);
-  overflow-y: visible;
-  max-height: 100vh;
   height: 100%;
 }
 
 .date-selector span {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
   color: #000;
 }
 
 .date-selector .date-items {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 6px;
   width: 100%;
-  overflow-y: auto;
 }
 
 .date-selector .date-items .date {
@@ -43,7 +33,7 @@
   font-weight: 400;
   font-family: inherit !important;
   cursor: pointer;
-  text-align: left;
+  text-align: center;
   transition: background-color 0.3s ease;
 }
 
@@ -61,15 +51,8 @@
   font-weight: 600;
 }
 
-@media (max-width: 1200px) {
-  .date-selector {
-    max-width: 120px;
-  }
-}
-
 @media (max-width: 910px) {
   .date-selector {
-    max-width: initial;
     gap: 6px;
     position: relative;
     top: 0;
@@ -91,5 +74,11 @@
   .date-selector .date-items .date {
     text-align: center;
     text-wrap: nowrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .date-selector {
+    padding: 10px 0 0 0;
   }
 }

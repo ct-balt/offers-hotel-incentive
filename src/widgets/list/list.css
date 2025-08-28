@@ -159,6 +159,7 @@
   justify-content: center;
   color: #fff;
   font-size: 12px;
+  flex-shrink: 0;
 }
 
 .list .card .price-info .top .price .current-price {
@@ -230,18 +231,23 @@
 }
 
 @media (max-width: 1200px) {
+  .list,
+  .list .card {
+    flex-shrink: 2;
+  }
+
   .list .card .price-info {
     max-width: 200px !important;
   }
 
   .list .card .info .image-wrapper {
     width: auto !important;
-    max-width: initial !important;
+    max-width: 275px !important;
     height: 100%;
   }
 
   .list .card .info .image-wrapper img {
-    width: auto !important;
+    width: 275px !important;
   }
 }
 
@@ -258,6 +264,7 @@
   }
 
   .list .card .info .image-wrapper {
+    max-width: initial !important;
     width: 100% !important;
     height: 210px;
     box-sizing: border-box;
