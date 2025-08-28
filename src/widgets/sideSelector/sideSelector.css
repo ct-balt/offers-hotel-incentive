@@ -88,6 +88,7 @@
   font-size: 14px;
   font-family: inherit !important;
   cursor: pointer;
+  padding-bottom: 10px;
 }
 
 .side-selector .wrapper .additional-filters-button svg {
