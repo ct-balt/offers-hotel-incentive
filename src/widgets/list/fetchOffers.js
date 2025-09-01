@@ -75,11 +75,3 @@ async function callApi(apiUrl, payload, options = {}) {
     if (error.name === "AbortError") return;
   }
 }
-
-// function searchFallback() {
-//   try {
-//     searchNextAvailableDate();
-//   } catch (error) {
-//     showWarningBanner();
-//   }
-// }
