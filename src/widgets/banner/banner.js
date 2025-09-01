@@ -53,12 +53,6 @@ function showLoadingBanner() {
   offersDiv.appendChild(loadingBanner);
 }
 
-function hideLoadingBanner() {
-  const offersDiv = document.querySelector(".offers-wrapper");
-  const existingBanner = offersDiv.querySelector(".loading-banner");
-  if (existingBanner) existingBanner.remove();
-}
-
 function showWarningBanner() {
   const offersDiv = document.querySelector(".offers-wrapper");
 
@@ -84,15 +78,52 @@ function showWarningBanner() {
 </svg>
             <div class="text">
               <span class="title">Nėra tinkamų variantų</span>
-              <span class="subtitle">Prašome pabandyti pakeisti išvykimo datą / miestą</span>
+              <span class="subtitle">Prašome pabandyti pakeisti paieškos parametrus</span>
             </div>
           </div>`;
 
   offersDiv.appendChild(warningBanner);
 }
 
-function hideWarningBanner() {
+function showFallbackBanner() {
   const offersDiv = document.querySelector(".offers-wrapper");
-  const existingBanner = offersDiv.querySelector(".warning-banner");
+
+  if (offersDiv.querySelector(".warning-banner")) return;
+
+  const warningBanner = document.createElement("div");
+  warningBanner.className = "warning-banner";
+  warningBanner.innerHTML = `<div class="content">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="45" viewBox="0 0 50 45" fill="none">
+<g clip-path="url(#clip0_826_1620)">
+<mask id="mask0_826_1620" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="50" height="45">
+<path d="M0.5 0.5H49.5V44.5H0.5V0.5Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_826_1620)">
+<path d="M25 12.7222V27.3888M25 32.2777V35.9444M4.84384 34.688L20.7762 7.66462C22.67 4.45017 27.3299 4.45017 29.2238 7.66462L45.1561 34.688C47.0769 37.9464 44.7225 42.0555 40.9323 42.0555H9.06764C5.27749 42.0555 2.92304 37.9488 4.84384 34.688Z" stroke="#F0AB00" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_826_1620">
+<rect width="49" height="44" fill="white" transform="translate(0.5 0.5)"/>
+</clipPath>
+</defs>
+</svg>
+            <div class="text">
+              <span class="title">Neradome tinkamų variantų</span>
+              <span class="subtitle">Ieškome naujų rezultatų kitomis datomis, prašome palaukti...</span>
+            </div>
+            
+          </div>
+          <div class="loading-spinner"></div>
+          `;
+
+  offersDiv.appendChild(warningBanner);
+}
+
+function hideBanner(banner) {
+  banner = banner === "fallback" ? "warning" : banner;
+
+  const offersDiv = document.querySelector(".offers-wrapper");
+  const existingBanner = offersDiv.querySelector(`.${banner}-banner`);
   if (existingBanner) existingBanner.remove();
 }
