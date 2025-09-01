@@ -10,7 +10,7 @@ async function fetchOffers() {
 
   removeListOffers();
   showLoadingBanner();
-  hideWarningBanner();
+  hideBanner("warning");
 
   try {
     const priceSearchEncryptResponse = await callApi(
@@ -31,14 +31,15 @@ async function fetchOffers() {
       { signal }
     );
 
-    hideWarningBanner();
+    hideBanner("warning");
     listOffers(priceSearchListResponse);
   } catch (error) {
     if (error.name === "AbortError") return;
+    searchNextAvailableDate();
     showWarningBanner();
     removeListOffers();
   } finally {
-    hideLoadingBanner();
+    hideBanner("loading");
   }
 }
 
@@ -74,3 +75,11 @@ async function callApi(apiUrl, payload, options = {}) {
     if (error.name === "AbortError") return;
   }
 }
+
+// function searchFallback() {
+//   try {
+//     searchNextAvailableDate();
+//   } catch (error) {
+//     showWarningBanner();
+//   }
+// }
