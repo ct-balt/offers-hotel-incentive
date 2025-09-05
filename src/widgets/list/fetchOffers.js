@@ -35,8 +35,18 @@ async function fetchOffers() {
     listOffers(priceSearchListResponse);
   } catch (error) {
     if (error.name === "AbortError") return;
-    searchNextAvailableDate();
-    showWarningBanner();
+    const nextDateResult = searchNextAvailableDate();
+
+    if (nextDateResult === 0) {
+      const fallbackUrl = await generateFallbackOffers();
+      if (!fallbackUrl) {
+        showWarningBanner();
+      } else {
+        const url = `https://www.coraltravel.lt${fallbackUrl.result.redirectionUrl}?qp=${fallbackUrl.result.queryParam}&p=1&w=0&s=0&ws=10`;
+        showAltSearchBanner(url);
+      }
+    }
+
     removeListOffers();
   } finally {
     hideBanner("loading");
