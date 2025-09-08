@@ -149,7 +149,12 @@ function showAltSearchBanner(url) {
             </div>
             
           </div>
-          <a href=${url} target="_blank" class="alt-search">Pasiūlymai</a>
+          <div class="button-wrapper">
+            <a href="https://www.coraltravel.lt/contact-us" target="_blank" class="contact-us">Siųsti užklausą</a>
+            <span>arba</span>
+            <a href=${url} target="_blank" class="alt-search">Peržiūrėti kitus pasiūlymus</a>
+          </div>
+          
           `;
 
   offersDiv.appendChild(warningBanner);
