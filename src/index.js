@@ -66,7 +66,7 @@ function loadAvailableDates() {
   const dates = getAvailableDates(matchedDestination.destination);
   const allDates = dates.flatMap((city) => city.availableDates);
 
-  const uniqueDates = [...new Set(allDates)];
+  const uniqueDates = [...new Set(allDates)].sort();
 
   listDates(uniqueDates);
 }
