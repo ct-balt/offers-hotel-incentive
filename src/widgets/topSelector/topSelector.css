@@ -23,7 +23,6 @@
 }
 
 .selector .destination-selector .destination {
-  max-width: 350px !important;
   min-width: 100px !important;
   width: 100%;
   padding: 6px;
