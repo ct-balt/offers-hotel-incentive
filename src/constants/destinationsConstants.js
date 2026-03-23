@@ -92,6 +92,12 @@ const destinationsConstants = [
         name: "Tenerifė",
         friendlyUrl: "tenerife",
       },
+      {
+        id: "12049-3-42-0",
+        type: 3,
+        name: "Maljorka",
+        friendlyUrl: "maljorka",
+      },
     ],
   },
 ];
