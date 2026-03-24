@@ -38,7 +38,7 @@ const generatePayloadPriceSearchEncrypt = () => {
 };
 
 const generatePayloadPriceSearchList = (priceSearchEncryptResponse) => {
-  viewAllUrl = `https://www.coraltravel.lt${priceSearchEncryptResponse.result.redirectionUrl}?qp=${priceSearchEncryptResponse.result.queryParam}&p=1&w=0&s=0&ws=10`;
+  viewAllUrl = `https://www.coraltravel.lt${priceSearchEncryptResponse.result.redirectionUrl}?${priceSearchEncryptResponse.result.queryParam}&p=1&w=0&s=0&ws=10`;
 
   const payload = {
     queryParam: priceSearchEncryptResponse.result.queryParam,
@@ -53,46 +53,26 @@ const generatePayloadPriceSearchList = (priceSearchEncryptResponse) => {
 
 const getDepartureLocation = () =>
   departuresConstants.find(
-    (departure) => departure.friendlyUrl === selectedValues.departure
+    (departure) => departure.friendlyUrl === selectedValues.departure,
   );
 
 const getDestinationObj = () =>
   destinationsConstants.find(
-    (destination) => destination.friendlyUrl === selectedValues.destination
+    (destination) => destination.friendlyUrl === selectedValues.destination,
   );
 
 const getDestinationLocation = () => {
   const destinationObj = getDestinationObj();
 
   if (!destinationObj.children) {
-    if (destinationObj.country === "juodkalnija") {
-      const additionalValues = destinationsConstants.find(
-        (destination) => destination.friendlyUrl === "kroatija"
-      );
-      return [
-        {
-          id: destinationObj.id,
-          type: destinationObj.type,
-          name: destinationObj.name,
-          friendlyUrl: destinationObj.friendlyUrl,
-        },
-        {
-          id: additionalValues.id,
-          type: additionalValues.type,
-          name: additionalValues.name,
-          friendlyUrl: additionalValues.friendlyUrl,
-        },
-      ];
-    } else {
-      return [
-        {
-          id: destinationObj.id,
-          type: destinationObj.type,
-          name: destinationObj.name,
-          friendlyUrl: destinationObj.friendlyUrl,
-        },
-      ];
-    }
+    return [
+      {
+        id: destinationObj.id,
+        type: destinationObj.type,
+        name: destinationObj.name,
+        friendlyUrl: destinationObj.friendlyUrl,
+      },
+    ];
   }
   const matchedDestination = offersObj.destinations.find(
     (dest) =>
@@ -100,20 +80,22 @@ const getDestinationLocation = () => {
         destinationObj.friendlyUrl &&
       dest.destination?.some((city) =>
         city.beginDates?.filter(
-          (dateObj) => dateObj.date === selectedValues.date
-        )
-      )
+          (dateObj) => dateObj.date === selectedValues.date,
+        ),
+      ),
   );
 
   const offerCityNames =
     matchedDestination?.destination
       .filter((city) =>
-        city.beginDates?.some((dateObj) => dateObj.date === selectedValues.date)
+        city.beginDates?.some(
+          (dateObj) => dateObj.date === selectedValues.date,
+        ),
       )
       .map((city) => city.name) || [];
 
   const matchingChildren = destinationObj.children.filter((child) =>
-    offerCityNames.includes(child.friendlyUrl)
+    offerCityNames.includes(child.friendlyUrl),
   );
 
   const destination = matchingChildren.map((child) => ({
@@ -133,7 +115,7 @@ const getStayNights = () => {
   const { destination, date } = selectedValues;
 
   const country = offersObj.destinations.find(
-    (c) => c.destinationDisplayName.toLowerCase() === destination
+    (c) => c.destinationDisplayName.toLowerCase() === destination,
   );
 
   const allStayNights = country.destination.flatMap((city) => {
@@ -144,7 +126,7 @@ const getStayNights = () => {
 
   const allUniqueStayNights = allStayNights.filter(
     (stayNight, index, self) =>
-      index === self.findIndex((sn) => sn.value === stayNight.value)
+      index === self.findIndex((sn) => sn.value === stayNight.value),
   );
 
   allUniqueStayNights.sort((a, b) => a.value - b.value);
