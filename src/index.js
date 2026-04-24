@@ -22,12 +22,21 @@ function init(offers) {
 }
 
 function loadAvailableCountries() {
-  const destinations = offersObj.destinations.map(
-    (dest) => dest.destinationDisplayName
+  const today = getCurrentDate();
+
+  const validDestinations = offersObj.destinations.filter((dest) => {
+    const hasValidDate = dest.destination.some((city) =>
+      city.beginDates.some((dateObj) => dateObj.date > today),
+    );
+    return hasValidDate;
+  });
+
+  const destinations = validDestinations.map(
+    (dest) => dest.destinationDisplayName,
   );
 
-  const lowercasedDestinations = offersObj.destinations.map((d) =>
-    d.destinationDisplayName.toLowerCase()
+  const lowercasedDestinations = validDestinations.map((d) =>
+    d.destinationDisplayName.toLowerCase(),
   );
 
   listDestinations(destinations, lowercasedDestinations);
@@ -35,7 +44,7 @@ function loadAvailableCountries() {
 
 function loadAvailableDepartures() {
   const matched = offersObj.destinations.find(
-    (dest) => dest.destinationDisplayName === selectedDestination
+    (dest) => dest.destinationDisplayName === selectedDestination,
   );
 
   const allDepartures = matched.destination.flatMap((city) => {
@@ -49,7 +58,7 @@ function loadAvailableDepartures() {
   });
 
   const uniqueDepartures = allDepartures.filter(
-    (dep, index, self) => index === self.findIndex((d) => d.name === dep.name)
+    (dep, index, self) => index === self.findIndex((d) => d.name === dep.name),
   );
 
   const departureDisplayNames = uniqueDepartures.map((d) => d.displayName);
@@ -60,7 +69,7 @@ function loadAvailableDepartures() {
 
 function loadAvailableDates() {
   const matchedDestination = offersObj.destinations.find(
-    (dest) => dest.destinationDisplayName === selectedDestination
+    (dest) => dest.destinationDisplayName === selectedDestination,
   );
 
   const dates = getAvailableDates(matchedDestination.destination);
@@ -68,5 +77,7 @@ function loadAvailableDates() {
 
   const uniqueDates = [...new Set(allDates)].sort();
 
-  listDates(uniqueDates);
+  if (uniqueDates.length > 0) {
+    listDates(uniqueDates);
+  }
 }

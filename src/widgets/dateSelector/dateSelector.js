@@ -23,13 +23,14 @@ const getAvailableDates = (destinations) => {
   const today = getCurrentDate();
 
   const filteredDestinations = destinations.filter((dest) =>
-    dest.departures?.name.includes(selectedValues.departure)
+    dest.departures?.name.includes(selectedValues.departure),
   );
 
   return filteredDestinations.map((city) => {
     const availableDates = city.beginDates
       .filter(
-        (d) => d.date > today && d.departures.includes(selectedValues.departure)
+        (d) =>
+          d.date > today && d.departures.includes(selectedValues.departure),
       )
       .map((d) => d.date);
 
